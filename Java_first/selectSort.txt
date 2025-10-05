@@ -40,7 +40,7 @@ public class test {
             // 如果找到更小的元素，则交换位置
             if (p != i) {
                 int temp = arr[i];
-                arr[i] = arr[minIndex];
+                arr[i] = arr[p];
                 arr[p] = temp;
             }
         }
