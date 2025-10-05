@@ -1,0 +1,26 @@
+class Animal {
+    void sound() {
+        System.out.println("Some animal sound");
+    }
+}
+
+class Bird extends Animal {
+    void fly() {
+        System.out.println("Bird is flying");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Animal obj = new Bird();  // 向上转型
+
+        // 判断 obj 是否是 Bird 类型
+        if (obj instanceof Bird) {
+            System.out.println("obj 是 Bird 类型");
+            Bird b = (Bird) obj;  // 安全向下转型
+            b.fly();
+        } else {
+            System.out.println("obj 不是 Bird 类型");
+        }
+    }
+}
