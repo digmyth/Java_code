@@ -1,0 +1,20 @@
+public class test {
+    public static void main(String[] args) {
+        // 最简单的饿汉式单例演示
+        Singleton instance1 = Singleton.getInstance();
+        Singleton instance2 = Singleton.getInstance();
+
+        System.out.println("两个实例是否相同: " + (instance1 == instance2));
+    }
+}
+
+// 最简单的单例：饿汉式，类加载即创建实例，天然线程安全
+class Singleton {
+    private static final Singleton INSTANCE = new Singleton();
+
+    private Singleton() {}
+
+    public static Singleton getInstance() {
+        return INSTANCE;
+    }
+}
