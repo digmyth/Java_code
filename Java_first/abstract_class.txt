@@ -1,0 +1,24 @@
+public class test {
+    public static void main(String[] args) {
+        Animal animal = new Dog();
+        animal.makeSound();
+        animal.sleep();
+    }
+}
+
+// 最简单的抽象类：包含一个抽象方法和一个普通方法
+abstract class Animal {
+    abstract void makeSound();
+
+    void sleep() {
+        System.out.println("Sleeping");
+    }
+}
+
+// 具体子类实现抽象方法
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Woof");
+    }
+}
