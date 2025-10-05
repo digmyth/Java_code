@@ -1,20 +1,52 @@
-public class test {
-    public static void main(String[] args) {
-        // 最简单的饿汉式单例演示
-        Singleton instance1 = Singleton.getInstance();
-        Singleton instance2 = Singleton.getInstance();
+# 静态内部类单例模式
+public class Singleton {
 
-        System.out.println("两个实例是否相同: " + (instance1 == instance2));
+    // 私有构造函数，防止外部创建实例
+    private Singleton() {
+        System.out.println("Singleton 实例被创建");
     }
-}
 
-// 最简单的单例：饿汉式，类加载即创建实例，天然线程安全
-class Singleton {
-    private static final Singleton INSTANCE = new Singleton();
+    // 静态内部类，只有在第一次调用 getInstance() 时才会加载
+    private static class Holder {
+        private static final Singleton INSTANCE = new Singleton();
+    }
 
-    private Singleton() {}
-
+    // 提供全局访问点
     public static Singleton getInstance() {
-        return INSTANCE;
+        return Holder.INSTANCE;
+    }
+
+    // 示例方法
+    public void doSomething() {
+        System.out.println("执行单例方法");
+    }
+
+    // 测试
+    public static void main(String[] args) {
+        Singleton s1 = Singleton.getInstance();
+        Singleton s2 = Singleton.getInstance();
+
+        System.out.println(s1 == s2); // true
+        s1.doSomething();
     }
 }
+
+############################################################################
+# 枚举单例
+public enum EnumSingleton {
+    INSTANCE;  // 唯一的实例
+
+    // 示例方法
+    public void doSomething() {
+        System.out.println("执行枚举单例方法");
+    }
+
+    public static void main(String[] args) {
+        EnumSingleton s1 = EnumSingleton.INSTANCE;
+        EnumSingleton s2 = EnumSingleton.INSTANCE;
+
+        System.out.println(s1 == s2); // true
+        s1.doSomething();
+    }
+}
+
