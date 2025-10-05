@@ -1,0 +1,32 @@
+#保持面向接口编程思想；
+#不破坏已有代码；
+#可层层扩展接口，演化出不同能力（很像“接口继承”）。
+
+interface Greeter {
+    void greet();
+}
+
+// 扩展接口，增加新方法
+interface AdvancedGreeter extends Greeter {
+    void xx();
+}
+
+class SimpleGreeter implements AdvancedGreeter {
+    @Override
+    public void greet() {
+        System.out.println("Hello");
+    }
+
+    @Override
+    public void xx() {
+        System.out.println("xxxx");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        AdvancedGreeter greeter = new SimpleGreeter();
+        greeter.greet();
+        greeter.xx();  // ✅ 正常调用
+    }
+}
