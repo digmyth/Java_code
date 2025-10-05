@@ -3,7 +3,7 @@
 选择排序的重要特点
 
 对于n个数据的排序，我们只需要执行n-1轮，因为每轮都能确定一个元素的最终位置。
-需要通过一个变量(p)来记录未排序区域中最小值的位置。
+需要通过一个变量(p)来记录未排序区域中最小值的索引。
 每一轮排序只需要执行一次交换操作。
 
 public class test {
@@ -28,20 +28,20 @@ public class test {
         // 外层循环：遍历数组的每个位置
         for (int i = 0; i < n - 1; i++) {
             // 假设当前位置是最小值的索引
-            int minIndex = i;
+            int p = i;
             
             // 内层循环：在剩余未排序的元素中找到最小值
             for (int j = i + 1; j < n; j++) {
-                if (arr[j] < arr[minIndex]) {
-                    minIndex = j;
+                if (arr[j] < arr[p]) {
+                    p = j;
                 }
             }
             
             // 如果找到更小的元素，则交换位置
-            if (minIndex != i) {
+            if (p != i) {
                 int temp = arr[i];
                 arr[i] = arr[minIndex];
-                arr[minIndex] = temp;
+                arr[p] = temp;
             }
         }
     }
