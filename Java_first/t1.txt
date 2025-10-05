@@ -1,0 +1,54 @@
+javadoc -d build/classes x.java
+
+Java有8种基本数据类型，也称原子数据类型
+
+分别占字节数： 1 2 4 8
+整数 byte short int long
+浮点 float  double 
+逻辑型 boolean
+字符型 char
+
+单个字符： 单引号
+
+asc 码7 位
+Unicode 16位
+
+
+
+#####################
+public class test {
+    public static void main(String[] args){
+        int x = (int)-8;
+        System.out.println((int)(x>>1));  //算术右移， 带符号,返回 -4
+    }
+}
+
+
+
+public class test {
+    public static void main(String[] args){
+        int x = (int)-8;
+        System.out.println((int)(x>>>1));  //逻辑右移，不带符号，最高位直接补0，返回2147483644 
+    }
+}
+
+
+#### C语言中 算术右移，最高位补符号位，即负数补1，正数补0 ##############
+#include <stdio.h>
+
+int main(){
+    	int a=-8;
+	printf("%d",-8>>1);  //返回-4
+} 
+
+
+#####  逻辑右移  ## 无符号右移就是逻辑右移，最高位直接补0  ##############
+#include <stdio.h>
+
+int main(){
+    unsigned	int a=(unsigned int)-8;
+    printf("%u",-8>>1);   // 4294967292
+} 
+
+
+结论： java/C 逻辑右移结果不一样，还不清楚
