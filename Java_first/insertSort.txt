@@ -1,49 +1,16 @@
 public class test {
     public static void main(String[] args) {
-        // 演示选择排序
-        System.out.println("=== 选择排序演示 ===");
-        int[] arr1 = {64, 25, 12, 22, 11};
+        // 创建一个示例数组
+        int[] arr = {64, 25, 12, 22, 11};
+        
         System.out.println("排序前的数组:");
-        printArray(arr1);
-        selectionSort(arr1);
-        System.out.println("选择排序后的数组:");
-        printArray(arr1);
+        printArray(arr);
         
-        System.out.println();
+        // 执行插入排序
+        insertionSort(arr);
         
-        // 演示插入排序
-        System.out.println("=== 插入排序演示 ===");
-        int[] arr2 = {64, 25, 12, 22, 11};
-        System.out.println("排序前的数组:");
-        printArray(arr2);
-        insertionSort(arr2);
-        System.out.println("插入排序后的数组:");
-        printArray(arr2);
-    }
-    
-    // 选择排序算法实现
-    public static void selectionSort(int[] arr) {
-        int n = arr.length;
-        
-        // 外层循环：遍历数组的每个位置
-        for (int i = 0; i < n - 1; i++) {
-            // 假设当前位置是最小值的索引
-            int minIndex = i;
-            
-            // 内层循环：在剩余未排序的元素中找到最小值
-            for (int j = i + 1; j < n; j++) {
-                if (arr[j] < arr[minIndex]) {
-                    minIndex = j;
-                }
-            }
-            
-            // 如果找到更小的元素，则交换位置
-            if (minIndex != i) {
-                int temp = arr[i];
-                arr[i] = arr[minIndex];
-                arr[minIndex] = temp;
-            }
-        }
+        System.out.println("排序后的数组:");
+        printArray(arr);
     }
     
     // 插入排序算法实现
