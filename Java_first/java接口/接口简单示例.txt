@@ -1,0 +1,54 @@
+# 不修改所有实现类的情况下，为接口添加新行为
+# 向接口添加方法不会破坏已有实现类
+# 可以有默认实现，也允许子类覆写
+# 在 Java 框架（如 Stream API、Collection）中广泛使用
+
+interface Greeter {
+    void greet();
+
+    default void xx() {      //默认已实现接口
+        System.out.println("Default xx()");
+    }
+}
+
+class SimpleGreeter implements Greeter {     //接口实现
+    @Override
+    public void greet() {
+        System.out.println("Hello");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Greeter greeter = new SimpleGreeter();    //接口调用
+        greeter.greet();
+        greeter.xx();  // ✅ 调用接口默认实现
+    }
+}
+
+
+
+==========================
+### 接口
+class SimpleGreeter implements Greeter
+
+# 用法：   
+public class test {
+    public static void main(String[] args) {
+        Greeter greeter = new SimpleGreeter();
+        greeter.greet();
+    }
+}
+
+// 最简单的接口：定义一个方法
+interface Greeter {
+    void greet();
+}
+
+// 实现该接口的简单类
+class SimpleGreeter implements Greeter {
+    @Override
+    public void greet() {
+        System.out.println("Hello");
+    }
+}
